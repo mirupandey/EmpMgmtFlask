@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang = "en">
+   <head></head>
+   <body>
+
+
+
+      <hr/>
+      {%- for message in get_flashed_messages() %}
+         {{ message }}
+      {%- endfor %}
+
+      <h3>Employee (<a href = '/search_user'>Search User)</a></h3>
+      <h3>Employee (<a href = '/new_user'>Add Employee</a>)</h3>
+
+      <table>
+         <thead>
+            <tr>
+                <th>Employee ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Dept ID</th>
+                <th>Gender</th>
+                <th>Date of Birth</th>
+                <th>Salary</th>
+                <th>Country Code</th>
+                <th>Mobile No.</th>
+            </tr>
+         </thead>
+
+         <tbody>
+            {% for emp in emps %}
+               <tr>
+                   <td>{{ emp["emp_id"] }}</td>
+                   <td>{{ emp["first_name"] }}</td>
+                   <td>{{ emp["last_name"] }}</td>
+                   <td>{{ emp["dept_id"] }}</td>
+                   <td>{{ emp["gender"] }}</td>
+                   <td>{{ emp["dob"] }}</td>
+                   <td>{{ emp["salary"] }}</td>
+                   <td>{{ emp["country_code"] }}</td>
+                   <td>{{ emp["mobile_no"] }}</td>
+                   <td><a href = '/update_user/{{ emp["emp_id"] }}'>Edit Employee</a></td>
+                   <td><a href='/delete/{{ emp["emp_id"] }}'>Delete Employee</a></td>
+                   <td></td>
+               </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+
+   </body>
+</html>

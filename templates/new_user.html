@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+   <body>
+
+      <h3>Employees - Flask SQLAlchemy example</h3>
+      <h3>Employee (<a href = "{{ url_for('get_all_users') }}">View Employee</a>)</h3>
+      <hr/>
+
+      {%- for category, message in get_flashed_messages(with_categories = true) %}
+         <div class = "alert alert-danger">
+            {{ message }}
+         </div>
+      {%- endfor %}
+
+      <form action = "{{ request.path }}" method = "POST" onsubmit="return true;">
+         <label for = "emp_id">Employee ID</label>
+         <input type = "number" id = "emp_id" name = "emp_id" placeholder = "Employee ID" /><br>
+         <label for = "first_name">First Name</label>
+         <input type = "text" id = "first_name" name = "first_name" placeholder = "First Name" /><br>
+         <label for = "last_name">Last Name</label>
+         <input type = "text" id = "last_name" name = "last_name" placeholder = "Last Name" /><br>
+         <label for = "dept_name">Department Name</label>
+         <select id="dept_name" name="dept_name">
+             <option value="" disabled></option>
+             <option value="New Joinee">New Joinee</option>
+             <option value="Development">Development</option>
+             <option value="Support">Support</option>
+             <option value="Maintenance">Maintenance</option>
+             <option value="Testing">Testing</option>
+         </select><br>
+         <label for = "gender">Gender</label>
+         <select id="gender" name="gender">
+             <option value="" disabled></option>
+             <option value="Male">Male</option>
+             <option value="Female">Female</option>
+         </select><br>
+         <label for = "dob">Date of Birth</label>
+         <input type = "date" id = "dob" name = "dob" placeholder = "Date of Birth" /><br>
+         <label for = "salary">Salary</label>
+         <input type = "number" id = "salary" name = "salary" placeholder = "Salary" /><br>
+         <label for = "country_code">Country Code</label>
+         <select id="country_code" name="country_code">
+             <option value="" disabled></option>
+             <option value="91">India(91)</option>
+             <option value="1">USA(1)</option>
+         </select>
+         <label for = "mobile_no">Phone No</label>
+         <input type = "number" id = "mobile_no" name = "mobile_no" placeholder = "Mobile No" /><br>
+         <input type = "submit" value = "Submit" />
+      </form>
+
+   </body>
+</html>

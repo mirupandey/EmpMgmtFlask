@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang = "en">
+   <head></head>
+   <body>
+
+      <hr/>
+      {%- for message in get_flashed_messages() %}
+         {{ message }}
+      {%- endfor %}
+
+      <h3>Employee (<a href = '/user'>View Users)</a></h3>
+      <h3>Employee (<a href = '/new_user'>Add Employee</a>)</h3>
+      <form action = "{{ request.path }}" method = "POST" onsubmit="return true;">
+         <label for = "emp_id">Employee ID</label>
+         <input type = "number" id = "emp_id" name = "emp_id"/><br>
+      </form>
+      {% if emps != None%}
+          <table>
+             <thead>
+                <tr>
+                    <th>Employee ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Dept ID</th>
+                    <th>Gender</th>
+                    <th>Date of Birth</th>
+                    <th>Salary</th>
+                    <th>Country Code</th>
+                    <th>Mobile No.</th>
+                </tr>
+             </thead>
+
+             <tbody>
+               <tr>
+                   <td>{{ emps["emp_id"] }}</td>
+                   <td>{{ emps["first_name"] }}</td>
+                   <td>{{ emps["last_name"] }}</td>
+                   <td>{{ emps["dept_id"] }}</td>
+                   <td>{{ emps["gender"] }}</td>
+                   <td>{{ emps["dob"] }}</td>
+                   <td>{{ emps["salary"] }}</td>
+                   <td>{{ emps["country_code"] }}</td>
+                   <td>{{ emps["mobile_no"] }}</td>
+                   <td><a href = '/update_user/{{ emps["emp_id"] }}'>Edit Employee</a></td>
+                   <td><a href='/delete/{{ emps["emp_id"] }}'>Delete Employee</a></td>
+                   <td></td>
+               </tr>
+             </tbody>
+          </table>
+      {% endif %}
+   </body>
+</html>
